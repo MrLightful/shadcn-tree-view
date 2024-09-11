@@ -3,6 +3,15 @@ The Tree View component allows you to navigate hierarchical lists of data with n
 
 Based on [implementation](https://github.com/shadcn-ui/ui/issues/355#issuecomment-1703767574) by [WangLarry](https://github.com/WangLarry) and [bytechase](https://github.com/bytechase).
 
+![demo](./demo.gif)
+
+## Features
+- [x] Expand and collapse nodes
+- [x] Select nodes
+- [x] Custom icons (per item; default, open, selected)
+- [x] Default node & leaf icons
+- [x] Action buttons (e.g. a button to add a new item)
+- [x] Click handlers (per tree item) and selection handlers (per tree view).
 
 ## Installation
 
