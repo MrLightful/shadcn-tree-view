@@ -6,12 +6,11 @@ Based on [implementation](https://github.com/shadcn-ui/ui/issues/355#issuecommen
 ![demo](./demo.gif)
 
 ## Features
-- [x] Expand and collapse nodes
-- [x] Select nodes
-- [x] Custom icons (per item; default, open, selected)
-- [x] Default node & leaf icons
+- [x] Expand, collapse, and select items
+- [x] Custom icons per item (default, open, selected)
+- [x] Default node & leaf icons per tree view
 - [x] Action buttons (e.g. a button to add a new item)
-- [x] Click handlers (per tree item) and selection handlers (per tree view).
+- [x] Click handlers per tree item and per the entire tree view.
 
 ## Installation
 
@@ -87,8 +86,11 @@ const data: TreeDataItem[] = [
 ```
 
 ## Roadmap
-- [ ] Add support for disabled items (#1)
-- [ ] Add support for programmatically controlling nodes (#2)
+- [ ] Add support for disabled items (https://github.com/romatallinn/shadcn-tree-view/issues/1)
+- [ ] Add support for programmatically controlling items (https://github.com/romatallinn/shadcn-tree-view/issues/2)
+- [ ] Add support for striped and non-striped variants of the tree (https://github.com/romatallinn/shadcn-tree-view/issues/3)
+- [ ] Add support for custom item renderers (https://github.com/romatallinn/shadcn-tree-view/issues/4)
+- [ ] Add support for drag and drop? (not sure)
 
 # License
 Licensed under the MIT license, see [`LICENSE`](LICENSE).
