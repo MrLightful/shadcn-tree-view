@@ -1,0 +1,37 @@
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create schema.json
+        run: node scripts/create-schema.js
+
+      - name: Upload schema.json
+        uses: actions/upload-artifact@v4
+        with:
+          name: schema.json
+          path: schema.json
+
+      - name: Extract package version
+        run: echo "PACKAGE_VERSION=$(npm pkg get version | sed 's/"//g')" >> "$GITHUB_ENV"
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "v${{ env.PACKAGE_VERSION }}"
+          tag_name: "v${{ env.PACKAGE_VERSION }}"
+          files: schema.json
+          make_latest: true
