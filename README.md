@@ -15,7 +15,7 @@ Based on [implementation](https://github.com/shadcn-ui/ui/issues/355#issuecommen
 ## Installation
 
 ```sh
-npx shadcn add "https://raw.githubusercontent.com/romatallinn/shadcn-tree-view/main/schema.json"
+npx shadcn add "https://mrlightful.com/registry/tree-view"
 ```
 
 ## Usage
