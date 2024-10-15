@@ -3,7 +3,9 @@ The Tree View component allows you to navigate hierarchical lists of data with n
 
 Based on [implementation](https://github.com/shadcn-ui/ui/issues/355#issuecomment-1703767574) by [WangLarry](https://github.com/WangLarry) and [bytechase](https://github.com/bytechase).
 
-![demo](./demo.gif)
+![demo gif](./demo.gif)
+
+### [DEMO](https://mrlightful.com/ui/tree-view)
 
 ## Features
 - [x] Expand, collapse, and select items
