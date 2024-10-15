@@ -108,6 +108,7 @@ const TreeView = React.forwardRef<HTMLDivElement, TreeProps>(
         )
     }
 )
+TreeView.displayName = 'TreeView'
 
 type TreeItemProps = TreeProps & {
     selectedItemId?: string
@@ -163,6 +164,7 @@ const TreeItem = React.forwardRef<HTMLDivElement, TreeItemProps>(
         )
     }
 )
+TreeItem.displayName = 'TreeItem'
 
 const TreeNode = ({
     item,
@@ -273,6 +275,7 @@ const TreeLeaf = React.forwardRef<
         )
     }
 )
+TreeLeaf.displayName = 'TreeLeaf'
 
 const AccordionTrigger = React.forwardRef<
     React.ElementRef<typeof AccordionPrimitive.Trigger>,
