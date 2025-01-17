@@ -11,9 +11,9 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
-  "keywords": [],
+  "keywords": ["react", "tree", "components", "shadcn", "ui"],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.2",
     "@radix-ui/react-scroll-area": "^1.2.2",
