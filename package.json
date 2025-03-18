@@ -11,21 +11,27 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
-  "keywords": ["react", "tree", "components", "shadcn", "ui"],
+  "keywords": [
+    "react",
+    "tree",
+    "components",
+    "shadcn",
+    "ui"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@radix-ui/react-accordion": "^1.2.2",
-    "@radix-ui/react-scroll-area": "^1.2.2",
+    "@radix-ui/react-accordion": "^1.2.3",
+    "@radix-ui/react-scroll-area": "^1.2.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "lucide-react": "^0.471.1",
+    "lucide-react": "^0.471.2",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
     "use-resize-observer": "^9.1.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.18",
-    "typescript": "^5.7.3"
+    "typescript": "^5.8.2"
   }
 }
