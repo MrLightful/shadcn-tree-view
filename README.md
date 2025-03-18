@@ -46,6 +46,8 @@ interface TreeDataItem {
     children?: TreeDataItem[]
     actions?: React.ReactNode
     onClick?: () => void
+    draggable?: boolean
+    droppable?: boolean
 }
 ```
 
@@ -81,6 +83,8 @@ const data: TreeDataItem[] = [
   {
     id: '6',
     name: 'Item 2',
+    draggable: true,
+    droppable: true,
   },
 ];
 
