@@ -14,7 +14,8 @@ fs.readFile(
       type: "registry:block",
       dependencies: [
         '@radix-ui/react-accordion',
-        'class-variance-authority'
+        'class-variance-authority',
+        'lucide-react'
       ],
       devDependencies: [],
       registryDependencies: [],
