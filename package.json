@@ -21,8 +21,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@radix-ui/react-accordion": "^1.2.3",
-    "@radix-ui/react-scroll-area": "^1.2.3",
+    "@radix-ui/react-accordion": "^1.2.4",
+    "@radix-ui/react-scroll-area": "^1.2.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.471.2",
@@ -31,7 +31,7 @@
     "use-resize-observer": "^9.1.0"
   },
   "devDependencies": {
-    "@types/react": "^18.3.18",
-    "typescript": "^5.8.2"
+    "@types/react": "^18.3.20",
+    "typescript": "^5.8.3"
   }
 }
