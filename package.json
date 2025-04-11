@@ -7,10 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "create-schema": "node scripts/create-schema.js"
   },
-  "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
-  },
   "keywords": [
     "react",
     "tree",
