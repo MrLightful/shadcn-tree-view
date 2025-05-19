@@ -13,7 +13,8 @@ Based on [implementation](https://github.com/shadcn-ui/ui/issues/355#issuecommen
 - [x] Default node & leaf icons per tree view.
 - [x] Action buttons (e.g. a button to add a new item).
 - [x] Click handlers per tree item and per the entire tree view.
-- [X] Drag & drop support.
+- [x] Drag & drop support.
+- [x] Disabled state. 
 
 ## Installation
 
@@ -49,6 +50,7 @@ interface TreeDataItem {
     onClick?: () => void
     draggable?: boolean
     droppable?: boolean
+    disabled?: boolean
 }
 ```
 
@@ -77,15 +79,15 @@ const data: TreeDataItem[] = [
       },
       {
         id: '5',
-        name: 'Item 1.2',
+        name: 'Item 1.2 (disabled)',
+        disabled: true
       },
     ],
   },
   {
     id: '6',
-    name: 'Item 2',
-    draggable: true,
-    droppable: true,
+    name: 'Item 2 (draggable)',
+    draggable: true
   },
 ];
 
@@ -93,7 +95,6 @@ const data: TreeDataItem[] = [
 ```
 
 ## Roadmap
-- [ ] Add support for disabled items (https://github.com/romatallinn/shadcn-tree-view/issues/1).
 - [ ] Add support for programmatically controlling items (https://github.com/romatallinn/shadcn-tree-view/issues/2).
 - [ ] Add support for striped and non-striped variants of the tree (https://github.com/romatallinn/shadcn-tree-view/issues/3).
 - [ ] Add support for custom item renderers (https://github.com/romatallinn/shadcn-tree-view/issues/4).
