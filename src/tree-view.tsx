@@ -29,6 +29,7 @@ interface TreeDataItem {
     onClick?: () => void
     draggable?: boolean
     droppable?: boolean
+    disabled?: boolean
 }
 
 type TreeProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -340,7 +341,7 @@ const TreeLeaf = React.forwardRef<
         const [isDragOver, setIsDragOver] = React.useState(false)
 
         const onDragStart = (e: React.DragEvent) => {
-            if (!item.draggable) {
+            if (!item.draggable || item.disabled) {
                 e.preventDefault()
                 return
             }
@@ -349,7 +350,7 @@ const TreeLeaf = React.forwardRef<
         }
 
         const onDragOver = (e: React.DragEvent) => {
-            if (item.droppable !== false && draggedItem && draggedItem.id !== item.id) {
+            if (item.droppable !== false && !item.disabled && draggedItem && draggedItem.id !== item.id) {
                 e.preventDefault()
                 setIsDragOver(true)
             }
@@ -360,6 +361,7 @@ const TreeLeaf = React.forwardRef<
         }
 
         const onDrop = (e: React.DragEvent) => {
+            if (item.disabled) return
             e.preventDefault()
             setIsDragOver(false)
             handleDrop?.(item)
@@ -373,13 +375,15 @@ const TreeLeaf = React.forwardRef<
                     treeVariants(),
                     className,
                     selectedItemId === item.id && selectedTreeVariants(),
-                    isDragOver && dragOverVariants()
+                    isDragOver && dragOverVariants(),
+                    item.disabled && 'opacity-50 cursor-not-allowed pointer-events-none'
                 )}
                 onClick={() => {
+                    if (item.disabled) return
                     handleSelectChange(item)
                     item.onClick?.()
                 }}
-                draggable={!!item.draggable}
+                draggable={!!item.draggable && !item.disabled}
                 onDragStart={onDragStart}
                 onDragOver={onDragOver}
                 onDragLeave={onDragLeave}
@@ -392,7 +396,7 @@ const TreeLeaf = React.forwardRef<
                     default={defaultLeafIcon}
                 />
                 <span className="flex-grow text-sm truncate">{item.name}</span>
-                <TreeActions isSelected={selectedItemId === item.id}>
+                <TreeActions isSelected={selectedItemId === item.id && !item.disabled}>
                     {item.actions}
                 </TreeActions>
             </div>
