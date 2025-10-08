@@ -18,7 +18,7 @@ export interface TreeViewRef {
 }
 
 const treeVariants = cva(
-  "group peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md px-2 py-1 text-left text-[13px] outline-hidden ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent/50 hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 leading-none"
+  "group peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md px-2 py-1 text-left text-sm outline-hidden ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent/50 hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 leading-none"
 );
 
 const selectedTreeVariants = cva(
@@ -30,7 +30,7 @@ const dragOverVariants = cva(
 );
 
 const treeLeafVariants = cva(
-  "group peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md px-2 py-1 text-left text-[13px] outline-hidden ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent/50 hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 leading-none"
+  "group peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md px-2 py-1 text-left text-sm outline-hidden ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent/50 hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 leading-none"
 );
 
 interface TreeDataItem {
@@ -446,11 +446,11 @@ const TreeNode = ({
             onDrop={onDrop}
           >
             <AccordionTrigger
-              className="flex-1"
               onClick={() => {
                 handleSelectChange(item);
                 item.onClick?.();
               }}
+              classNameHeader="w-full w-[calc(100%-34px)]"
             >
               <TreeIcon
                 item={item}
@@ -464,7 +464,7 @@ const TreeNode = ({
             </AccordionTrigger>
 
             {item.actions && (
-              <div className="flex items-center">
+              <div className="flex shrink-0 items-center">
                 <TreeActions>{item.actions}</TreeActions>
               </div>
             )}
@@ -592,9 +592,11 @@ TreeLeaf.displayName = "TreeLeaf";
 
 const AccordionTrigger = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
-  <AccordionPrimitive.Header className="w-full">
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger> & {
+    classNameHeader?: string;
+  }
+>(({ className, classNameHeader, children, ...props }, ref) => (
+  <AccordionPrimitive.Header className={cn("", classNameHeader)}>
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
@@ -617,7 +619,7 @@ const AccordionContent = React.forwardRef<
   <AccordionPrimitive.Content
     ref={ref}
     className={cn(
-      "data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-[13px] transition-all duration-200",
+      "data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm transition-all duration-200",
       className
     )}
     {...props}
