@@ -14,7 +14,7 @@
     "shadcn",
     "ui"
   ],
-  "author": "Roman Sirokov <sirokov@dizconto.com>",
+  "author": "Roman Sirokov <roman@mrlightful.com>",
   "license": "MIT",
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.4",
