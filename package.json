@@ -1,6 +1,6 @@
 {
   "name": "shadncn-tree-view",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A react tree view component for shadcn/ui.",
   "main": "index.js",
   "scripts": {

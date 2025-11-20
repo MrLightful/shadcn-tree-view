@@ -303,7 +303,7 @@ const TreeNode = ({
                         treeVariants(),
                         isSelected && selectedTreeVariants(),
                         isDragOver && dragOverVariants(),
-                        tem.className
+                        item.className
                     )}
                     onClick={() => {
                         handleSelectChange(item)
