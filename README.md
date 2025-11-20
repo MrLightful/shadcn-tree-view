@@ -101,5 +101,10 @@ const data: TreeDataItem[] = [
 ## Roadmap
 - [ ] Add support for programmatically controlling items (https://github.com/romatallinn/shadcn-tree-view/issues/2).
 
+## Alternatives
+
+- [Kibo UI / Tree](https://www.kibo-ui.com/components/tree)
+- [ReUI / Tree](https://reui.io/docs/tree)
+
 # License
 Licensed under the MIT license, see [`LICENSE`](LICENSE).
