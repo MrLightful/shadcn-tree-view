@@ -443,7 +443,6 @@ const TreeLeaf = React.forwardRef<
             >
                 {renderItem ? (
                     <>
-                        {/* 占位元素，与 ChevronRight 相同尺寸，保持对齐 */}
                         <div className="h-4 w-4 shrink-0 mr-1" />
                         {renderItem({
                             item,
