@@ -113,6 +113,7 @@ const data: TreeDataItem[] = [
 
 - [Kibo UI / Tree](https://www.kibo-ui.com/components/tree?utm_source=github&utm_medium=referral&utm_campaign=mrlightful/shadcn-tree-view)
 - [ReUI / Tree](https://reui.io/docs/tree?utm_source=github&utm_medium=referral&utm_campaign=mrlightful/shadcn-tree-view)
+- [Coss / Tree](https://coss.com/origin/tree?utm_source=github&utm_medium=referral&utm_campaign=mrlightful/shadcn-tree-view)
 
 # License
 
