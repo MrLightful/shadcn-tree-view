@@ -21,15 +21,16 @@ const dragOverVariants = cva(
 interface TreeDataItem {
     id: string
     name: string
-    icon?: any
-    selectedIcon?: any
-    openIcon?: any
+    icon?: React.ComponentType<{ className?: string }>
+    selectedIcon?: React.ComponentType<{ className?: string }>
+    openIcon?: React.ComponentType<{ className?: string }>
     children?: TreeDataItem[]
     actions?: React.ReactNode
     onClick?: () => void
     draggable?: boolean
     droppable?: boolean
     disabled?: boolean
+    className?: string
 }
 
 type TreeRenderItemParams = {
@@ -46,8 +47,8 @@ type TreeProps = React.HTMLAttributes<HTMLDivElement> & {
     initialSelectedItemId?: string
     onSelectChange?: (item: TreeDataItem | undefined) => void
     expandAll?: boolean
-    defaultNodeIcon?: any
-    defaultLeafIcon?: any
+    defaultNodeIcon?: React.ComponentType<{ className?: string }>
+    defaultLeafIcon?: React.ComponentType<{ className?: string }>
     onDocumentDrag?: (sourceItem: TreeDataItem, targetItem: TreeDataItem) => void
     renderItem?: (params: TreeRenderItemParams) => React.ReactNode
 }
@@ -71,7 +72,7 @@ const TreeView = React.forwardRef<HTMLDivElement, TreeProps>(
         const [selectedItemId, setSelectedItemId] = React.useState<
             string | undefined
         >(initialSelectedItemId)
-        
+
         const [draggedItem, setDraggedItem] = React.useState<TreeDataItem | null>(null)
 
         const handleSelectChange = React.useCallback(
@@ -106,10 +107,10 @@ const TreeView = React.forwardRef<HTMLDivElement, TreeProps>(
                 items: TreeDataItem[] | TreeDataItem,
                 targetId: string
             ) {
-                if (items instanceof Array) {
+                if (Array.isArray(items)) {
                     for (let i = 0; i < items.length; i++) {
-                        ids.push(items[i]!.id)
-                        if (walkTreeItems(items[i]!, targetId) && !expandAll) {
+                        ids.push(items[i].id)
+                        if (walkTreeItems(items[i], targetId) && !expandAll) {
                             return true
                         }
                         if (!expandAll) ids.pop()
@@ -144,8 +145,7 @@ const TreeView = React.forwardRef<HTMLDivElement, TreeProps>(
                 />
                 <div
                     className='w-full h-[48px]'
-                    onDrop={(e) => { handleDrop({id: '', name: 'parent_div'})}}>
-
+                    onDrop={() => { handleDrop({id: '', name: 'parent_div'})}}>
                 </div>
             </div>
         )
@@ -157,8 +157,8 @@ type TreeItemProps = TreeProps & {
     selectedItemId?: string
     handleSelectChange: (item: TreeDataItem | undefined) => void
     expandedItemIds: string[]
-    defaultNodeIcon?: any
-    defaultLeafIcon?: any
+    defaultNodeIcon?: React.ComponentType<{ className?: string }>
+    defaultLeafIcon?: React.ComponentType<{ className?: string }>
     handleDragStart?: (item: TreeDataItem) => void
     handleDrop?: (item: TreeDataItem) => void
     draggedItem: TreeDataItem | null
@@ -188,7 +188,7 @@ const TreeItem = React.forwardRef<HTMLDivElement, TreeItemProps>(
         },
         ref
     ) => {
-        if (!(data instanceof Array)) {
+        if (!(Array.isArray(data))) {
             data = [data]
         }
         return (
@@ -249,8 +249,8 @@ const TreeNode = ({
     handleSelectChange: (item: TreeDataItem | undefined) => void
     expandedItemIds: string[]
     selectedItemId?: string
-    defaultNodeIcon?: any
-    defaultLeafIcon?: any
+    defaultNodeIcon?: React.ComponentType<{ className?: string }>
+    defaultLeafIcon?: React.ComponentType<{ className?: string }>
     handleDragStart?: (item: TreeDataItem) => void
     handleDrop?: (item: TreeDataItem) => void
     draggedItem: TreeDataItem | null
@@ -302,7 +302,8 @@ const TreeNode = ({
                     className={cn(
                         treeVariants(),
                         isSelected && selectedTreeVariants(),
-                        isDragOver && dragOverVariants()
+                        isDragOver && dragOverVariants(),
+                        tem.className
                     )}
                     onClick={() => {
                         handleSelectChange(item)
@@ -365,7 +366,7 @@ const TreeLeaf = React.forwardRef<
         level: number
         selectedItemId?: string
         handleSelectChange: (item: TreeDataItem | undefined) => void
-        defaultLeafIcon?: any
+        defaultLeafIcon?: React.ComponentType<{ className?: string }>
         handleDragStart?: (item: TreeDataItem) => void
         handleDrop?: (item: TreeDataItem) => void
         draggedItem: TreeDataItem | null
@@ -427,7 +428,8 @@ const TreeLeaf = React.forwardRef<
                     className,
                     isSelected && selectedTreeVariants(),
                     isDragOver && dragOverVariants(),
-                    item.disabled && 'opacity-50 cursor-not-allowed pointer-events-none'
+                    item.disabled && 'opacity-50 cursor-not-allowed pointer-events-none',
+                    item.className
                 )}
                 onClick={() => {
                     if (item.disabled) return
@@ -517,9 +519,9 @@ const TreeIcon = ({
     item: TreeDataItem
     isOpen?: boolean
     isSelected?: boolean
-    default?: any
+    default?: React.ComponentType<{ className?: string }>
 }) => {
-    let Icon = defaultIcon
+    let Icon: React.ComponentType<{ className?: string }> | undefined = defaultIcon
     if (isSelected && item.selectedIcon) {
         Icon = item.selectedIcon
     } else if (isOpen && item.openIcon) {
