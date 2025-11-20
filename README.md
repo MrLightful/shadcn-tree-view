@@ -6,6 +6,7 @@ Based on [implementation](https://github.com/shadcn-ui/ui/issues/355#issuecommen
 ![demo gif](./demo.gif)
 
 ### [DEMO](https://mrlightful.com/ui/tree-view)
+[Tree View Table (advanced)](https://github.com/PatrickSCLin/shadcn-tree-table)
 
 ## Features
 - [x] Expand, collapse, and select items.
@@ -14,7 +15,8 @@ Based on [implementation](https://github.com/shadcn-ui/ui/issues/355#issuecommen
 - [x] Action buttons (e.g. a button to add a new item).
 - [x] Click handlers per tree item and per the entire tree view.
 - [x] Drag & drop support.
-- [x] Disabled state. 
+- [x] Disabled state.
+- [x] Custom item renderers. 
 
 ## Installation
 
@@ -31,9 +33,10 @@ type TreeProps = React.HTMLAttributes<HTMLDivElement> & {
     data: TreeDataItem[] | TreeDataItem
     initialSelectedItemId?: string
     onSelectChange?: (item: TreeDataItem | undefined) => void
+    renderItem?: (params: TreeRenderItemParams) => React.ReactNode
     expandAll?: boolean
-    defaultNodeIcon?: any
-    defaultLeafIcon?: any
+    defaultNodeIcon?: React.ComponentType<{ className?: string }>
+    defaultLeafIcon?: React.ComponentType<{ className?: string }>
 }
 ```
 
@@ -42,15 +45,16 @@ type TreeProps = React.HTMLAttributes<HTMLDivElement> & {
 interface TreeDataItem {
     id: string
     name: string
-    icon?: any
-    selectedIcon?: any
-    openIcon?: any
+    icon?: React.ComponentType<{ className?: string }>
+    selectedIcon?: React.ComponentType<{ className?: string }>
+    openIcon?: React.ComponentType<{ className?: string }>
     children?: TreeDataItem[]
     actions?: React.ReactNode
     onClick?: () => void
     draggable?: boolean
     droppable?: boolean
     disabled?: boolean
+    className?: string
 }
 ```
 
@@ -96,8 +100,6 @@ const data: TreeDataItem[] = [
 
 ## Roadmap
 - [ ] Add support for programmatically controlling items (https://github.com/romatallinn/shadcn-tree-view/issues/2).
-- [ ] Add support for striped and non-striped variants of the tree (https://github.com/romatallinn/shadcn-tree-view/issues/3).
-- [ ] Add support for custom item renderers (https://github.com/romatallinn/shadcn-tree-view/issues/4).
 
 # License
 Licensed under the MIT license, see [`LICENSE`](LICENSE).
